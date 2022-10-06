@@ -16,14 +16,20 @@ public class ProdutoBO {
 
 	public ProdutoTO listar(int id){
 		pd = new ProdutoDAO();
-		//REGRAS DE NEGÓCIO
+		//REGRAS DE NEGï¿½CIO
 		return pd.select(id);
 	}
 
 	public boolean cadastrar(ProdutoTO pto) {
 		pd = new ProdutoDAO();
-		//REGRAS DE NEGÓCIO
+		//REGRAS DE NEGï¿½CIO
 		return pd.insert(pto);
+	}
+	
+	public void atualiza(ProdutoTO pto) {
+		pd = new ProdutoDAO();
+		//regras de negocio
+		pd.update(pto);
 	}
 	
 }

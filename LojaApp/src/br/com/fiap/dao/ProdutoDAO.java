@@ -69,7 +69,7 @@ public class ProdutoDAO {
 	
 	public boolean insert(ProdutoTO pto) {
 		
-		//GERANDO O CÓDIGO DO PRODUTO
+		//GERANDO O Cï¿½DIGO DO PRODUTO
 		pto.setCodigo(listaProduto.size() + 1);
 		
 		//INSERINDO O PRODUTO NA BASE E RECEBENDO
@@ -78,7 +78,22 @@ public class ProdutoDAO {
 		
 	}
 	
-	
+	//UPDATE
+	public void update(ProdutoTO pto) {
+		
+		ProdutoTO produto = select(pto.getCodigo());
+		
+		produto.setTitulo(pto.getTitulo());
+		produto.setPreco(pto.getPreco());
+		produto.setQuantidade(pto.getQuantidade());
+		
+		for (int i=0; i<listaProduto.size(); i++) {
+			if (listaProduto.get(i) == produto) {
+				listaProduto.set(i, produto);
+			}
+		}
+		
+	}	
 	
 	
 	

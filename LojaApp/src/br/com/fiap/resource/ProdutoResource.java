@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -42,19 +43,31 @@ public class ProdutoResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(ProdutoTO produto, @Context UriInfo uriInfo) {
 		
-		//GERANDO O CÓDIGO DO PRODUTO
+		//GERANDO O Cï¿½DIGO DO PRODUTO
 		pb.cadastrar(produto);
 		
 		//CONSTRUIR A URI DE RETORNO
 		UriBuilder builder = uriInfo.getAbsolutePathBuilder();
 		
-		//PARSEANDO E CONCATENANDO O CÓDIGO DO PRODUTO COM A URL
+		//PARSEANDO E CONCATENANDO O Cï¿½DIGO DO PRODUTO COM A URL
 		builder.path(Integer.toString(produto.getCodigo()));
 		
-		//RETORNANDO A URL E TESTANDO A SOLICITAÇÃO E REALIZANDO O POST.
+		//RETORNANDO A URL E TESTANDO A SOLICITAï¿½ï¿½O E REALIZANDO O POST.
 		return Response.created(builder.build()).build();
 	}
+
 	
+	@PUT
+	@Path("/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response atualizar(ProdutoTO produto, @PathParam("id") int id) {
+		
+		produto.setCodigo(id);
+		pb.atualiza(produto);
+		
+		return Response.ok().build();
+		
+	}
 	
 	
 		
