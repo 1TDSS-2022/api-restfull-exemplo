@@ -32,4 +32,10 @@ public class ProdutoBO {
 		pd.update(pto);
 	}
 	
+	public void remover(ProdutoTO pto) {
+		pd = new ProdutoDAO();
+		//REGRAS DE NEGOCIO
+		pd.delete(pto);
+	}
+	
 }

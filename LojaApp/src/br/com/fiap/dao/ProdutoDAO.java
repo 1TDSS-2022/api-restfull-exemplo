@@ -101,6 +101,12 @@ public class ProdutoDAO {
 	}
 	
 	
-	
+	//DELETE
+	public void delete(ProdutoTO pto) {
+		
+		
+		listaProduto.remove(select(pto.getCodigo()));
+		
+	}
 	
 }
