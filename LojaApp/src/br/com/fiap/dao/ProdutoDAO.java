@@ -1,6 +1,7 @@
 package br.com.fiap.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import br.com.fiap.to.ProdutoTO;
@@ -67,18 +68,37 @@ public class ProdutoDAO {
 		return null;
 	}
 	
+	//INSERT
 	public boolean insert(ProdutoTO pto) {
 		
-		//GERANDO O CÓDIGO DO PRODUTO
+		//GERANDO O CODIGO DO PRODUTO
 		pto.setCodigo(listaProduto.size() + 1);
 		
 		//INSERINDO O PRODUTO NA BASE E RECEBENDO
 		// UM TRUE OU FALSE
 		return listaProduto.add(pto);
 		
+		
 	}
 	
-	
+	//UPDATE
+	public void update(ProdutoTO pto) {
+		
+		
+		ProdutoTO produto = select(pto.getCodigo());
+		
+		produto.setTitulo(pto.getTitulo());
+		produto.setPreco(pto.getPreco());
+		produto.setQuantidade(pto.getQuantidade());
+		
+		
+		//INSERINDO NA BASE DE DADOS
+		for (int i = 0; i < listaProduto.size(); i++) {
+			if(listaProduto.get(i) == produto) {
+				listaProduto.set(i, produto);
+			}
+		}
+	}
 	
 	
 	
