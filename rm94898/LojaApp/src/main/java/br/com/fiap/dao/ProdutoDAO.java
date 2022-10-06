@@ -18,7 +18,7 @@ public class ProdutoDAO {
 			pto.setQuantidade(10);
 			pto.setTitulo("Grampeador");
 			produto.add(pto);
-			
+
 			pto = new ProdutoTO();
 			pto.setCodigo(2);
 			pto.setPreco(51.99);
@@ -54,4 +54,22 @@ public class ProdutoDAO {
 		return produto;
 	}
 
+	public ProdutoTO select(int id) {
+		for (int i = 0; i < produto.size(); i++) {
+			if (produto.get(i).getCodigo() == id) {
+				return produto.get(i);
+			}
+		}
+		return null;
+	}
+	
+	
+	public boolean insert(ProdutoTO pto) {
+		pto.setCodigo(produto.size() + 1);
+		return produto.add(pto);
+			
+	}
+	
+	
+	
 }
