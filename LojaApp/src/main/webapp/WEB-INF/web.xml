@@ -17,6 +17,7 @@
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>jersey.config.server.provider.packages</param-name>
+			<!--  Endpoint -->
 			<param-value>br.com.fiap.resource</param-value>
 		</init-param>
 		<init-param>
@@ -25,9 +26,12 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	<!-- Mapa do site -->
+	<!-- O /rest/ está ligado ao <servlet> que chama o br.com.fiap.resource  -->
 	<servlet-mapping>
 		<servlet-name>jersey-servlet</servlet-name>
-		<!-- Página source é <endereço>/rest -->
+		<!-- Página source é <endereço>/rest/* -->
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 </web-app>
