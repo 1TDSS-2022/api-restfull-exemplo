@@ -16,5 +16,22 @@ public class ProdutoBO {
 		pd = new ProdutoDAO(); //Toda vez que dar new(instanciar) o ProdutoDAO, o construtor da classe dele será chamado
 		return pd.select(); //Após o construtor de DAO criar os itens, aqui retornará a lista pelo metodo select() criado na classe
 	}
+	
+	
+	//Metodo retorna apenas 1 item e não uma lista
+	public ProdutoTO listar(int id) {
+		pd = new ProdutoDAO();
+		return pd.select(id);
+	}
+	
+	
+	//cadastrar produto
+	public boolean cadastrar(ProdutoTO pto) {
+		pd = new ProdutoDAO();
+		//REGRAS DE NEGOCIOS
+		return pd.insert(pto);
+	}
+	
+
 
 }

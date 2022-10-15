@@ -53,8 +53,30 @@ public class ProdutoDAO {
 		}
 	}
 	
+	//get-all
 	public List<ProdutoTO> select() {
 		return listaProduto;
 	}
+	
+	//get-id
+	public ProdutoTO select(int id) {
+		for (int i = 0; i < listaProduto.size(); i++) {
+			if (listaProduto.get(i).getCodigo() == id) {
+				return listaProduto.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public boolean insert(ProdutoTO pto) {
+		
+		//GERANDO O CÓDIGO DO PRODUTO
+		pto.setCodigo(listaProduto.size()+1);
+		
+		//INSERINDO O PRODUTO NA BASE E RECEBENDO
+		//UM TRUE OU FALSE
+		return listaProduto.add(pto);
+	}
+	
 }
 
