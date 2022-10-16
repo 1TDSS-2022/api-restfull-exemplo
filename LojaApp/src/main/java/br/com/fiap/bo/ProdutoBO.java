@@ -32,6 +32,19 @@ public class ProdutoBO {
 		return pd.insert(pto);
 	}
 	
+	//Atualizar produto
+	public void atualiza(ProdutoTO pto) {
+		pd = new ProdutoDAO();
+		//REGRAS DE NEGOCIOS
+		pd.update(pto);
+	}
+	
+	//Deleta produto
+	public void remover(int id) {
+		pd = new ProdutoDAO();
+		pd.delete(id);
+	}
+	
 
 
 }

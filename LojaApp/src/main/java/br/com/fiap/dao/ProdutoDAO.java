@@ -68,8 +68,8 @@ public class ProdutoDAO {
 		return null;
 	}
 	
-	public boolean insert(ProdutoTO pto) {
-		
+	//INSERT
+	public boolean insert(ProdutoTO pto) {		
 		//GERANDO O CÓDIGO DO PRODUTO
 		pto.setCodigo(listaProduto.size()+1);
 		
@@ -78,5 +78,30 @@ public class ProdutoDAO {
 		return listaProduto.add(pto);
 	}
 	
+	//UPDATE
+	public void update(ProdutoTO pto) {
+		
+		ProdutoTO produto = select(pto.getCodigo());
+		produto.setTitulo(pto.getTitulo());
+		produto.setPreco(pto.getPreco());
+		produto.setQuantidade(pto.getQuantidade());
+		
+		//INSERINDO NA BASE DE DADOS
+		for (int i = 0; i < listaProduto.size(); i++) {
+			if(listaProduto.get(i) == produto) {			
+				listaProduto.set(i, produto);
+			}
+		}
+	}
+	
+	
+	//DELETE
+	public void delete(int id) {
+		listaProduto.remove(select(id));
+	}
+	
+	
 }
+	
+
 
